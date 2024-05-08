@@ -20,3 +20,14 @@ def scan_range(ip, start_port, end_port):
     for port in range(start_port, end_port + 1):
         thread = threading.Thread(target=scan_port, args=(ip, port))
         thread.start()
+
+# Define the main function
+def main():
+    ip = input("Enter the IP address to scan: ")
+    start_port = int(input("Enter the start port number: "))
+    end_port = int(input("Enter the end port number: "))
+    scan_range(ip, start_port, end_port)
+
+# Call the main function
+if __name__ == "__main__":
+    main()
