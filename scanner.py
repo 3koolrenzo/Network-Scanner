@@ -5,6 +5,7 @@ import threading
 
 
 # Define the functions
+# This function takes the IP address and port number and attempts to etsablish a TCP connection
 def scan_port(ip, port):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -16,12 +17,13 @@ def scan_port(ip, port):
     except Exception as e:
         print(f"Error while scanning port {port} on {ip}: {e}")
 
+# This function takes the IP, Start Port, and End Port and iterates through the range of ports numbers specified
 def scan_range(ip, start_port, end_port):
     for port in range(start_port, end_port + 1):
         thread = threading.Thread(target=scan_port, args=(ip, port))
         thread.start()
 
-# Define the main function
+# Defines the main function
 def main():
     ip = input("Enter the IP address to scan: ")
     start_port = int(input("Enter the start port number: "))
